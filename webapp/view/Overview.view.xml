@@ -1,0 +1,146 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="delaware.scpupload.controller.Overview"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+	<App>
+		<pages>
+			<Page title="{i18n>lblOverview}">
+				<content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="GetUploadLines">
+						<smartFilterBar:controlConfiguration>						
+							<smartFilterBar:ControlConfiguration label="{i18n>UPLOAD_NAME}" index="1" key="UploadName" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>					
+						<smartFilterBar:controlConfiguration>						
+							<smartFilterBar:ControlConfiguration label="{i18n>UPLOADED_ON}" index="2" key="UploadTimestamp" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>					
+						</smartFilterBar:controlConfiguration>					
+						<smartFilterBar:controlConfiguration>						
+							<smartFilterBar:ControlConfiguration label="{i18n>UPLOADED_BY}" index="3" key="UploadUser" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>					
+						</smartFilterBar:controlConfiguration>					
+						<!--<smartFilterBar:controlConfiguration>						
+							<smartFilterBar:ControlConfiguration label="{i18n>UPLOAD_STATUS}" key="UploadStatus" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>					
+						</smartFilterBar:controlConfiguration>	-->
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration
+								key="UploadStatus" index="4" label="{i18n>UPLOAD_STATUS}"
+								groupId="_BASIC" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Select selectedKey="0">
+										<core:Item key="999" text=""/>
+										<core:Item key="0" text="{i18n>lblUploadInitial}"/>
+										<core:Item key="1" text="{i18n>lblUploadSyncRunning}"/>
+										<core:Item key="2" text="{i18n>lblUploadSuccessful}"/>
+										<core:Item key="3" text="{i18n>lblUploadFailed}"/>
+										<core:Item key="4" text="{i18n>lblUploadDisabled}"/>
+									</Select>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar>
+					<smartTable:SmartTable
+						id="tblUploadLines"
+						entitySet="GetUploadLines"
+						tableType="ResponsiveTable" 
+						useExportToExcel="true"
+						useVariantManagement="false" 
+						useTablePersonalisation="true"
+						header="{i18n>lblUploads}" 
+						showRowCount="true" 
+						persistencyKey="smrttblUploads" 
+						enableAutoBinding="true" 
+						demandPopin="true" 
+						class="sapUiResponsiveContentPadding"
+						smartFilterId="smartFilterBar"
+						beforeRebindTable="onBeforeRebindTable">
+						<smartTable:customToolbar>
+							<OverflowToolbar design="Transparent">
+								<ToolbarSpacer/>
+								<OverflowToolbarButton icon="sap-icon://add" text="Add" press="onAddUploadPress"/>
+							</OverflowToolbar>
+						</smartTable:customToolbar>
+						<Table itemPress="onRowPress">
+							<columns>
+								<Column id="UploadID" hAlign="Begin" vAlign="Middle">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "UploadId", "columnIndex":"0", "leadingProperty": "UploadId"}' />
+									</customData>
+									<Text text="{@i18n&gt;UPLOAD_ID}" />
+								</Column>
+								<Column id="UploadName" hAlign="Begin" vAlign="Middle">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "UploadName", "columnIndex":"1", "leadingProperty": "UploadName"}' />
+									</customData>
+									<Text text="{@i18n&gt;UPLOAD_NAME}" />
+								</Column>
+								<Column id="UploadTimestamp" hAlign="Begin" vAlign="Middle">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "UploadTimestamp", "columnIndex":"2", "leadingProperty": "UploadTimestamp"}' />
+									</customData>
+									<Text text="{@i18n&gt;UPLOADED_ON}" />
+								</Column>
+								<Column id="UploadUser" hAlign="Begin" vAlign="Middle">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "UploadUser", "columnIndex":"3", "leadingProperty": "UploadUser"}' />
+									</customData>
+									<Text text="{@i18n&gt;UPLOADED_BY}" />
+								</Column>
+								<Column id="UploadStatus" hAlign="Begin" vAlign="Middle">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "UploadStatus", "columnIndex":"4", "leadingProperty": "UploadStatus"}' />
+									</customData>
+									<Text text="{@i18n&gt;UPLOAD_STATUS}" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Active">
+									<cells>
+										<Text
+											text="{UploadId}" />
+										<Text
+											text="{UploadName}" />
+										<Text
+											text="{
+											path: 'UploadTimestamp',
+											type: 'sap.ui.model.type.DateTime',
+											formatOptions: {
+												pattern: 'dd/MM/YYYY HH:mm:ss'
+											}
+										}" />
+										<Text
+											text="{UploadUser}" />
+										<FlexBox alignItems="Center" justifyContent="Start">
+											<ObjectStatus
+												class="sapUiTinyMarginEnd"
+												icon="{
+													path: 'UploadStatus',
+													formatter: '.formatter.uploadStatusIcon'
+												}"
+												text="{
+													path: 'UploadStatus',
+													formatter: '.formatter.uploadStatusText'
+												}"
+												state="{
+													path: 'UploadStatus',
+													formatter: '.formatter.uploadStatusState'
+												}" />
+											<Button icon="sap-icon://inspection" tooltip="{i18n>btnErrors}" enabled="{= ${UploadStatus} === '3' }" visible="{= ${UploadStatus} === '3' }" press="onShowErrorsPress" class="sapUiTinyMarginEnd"/>
+											<Button icon="sap-icon://repost" tooltip="{i18n>btnReprocess}" enabled="{= ${UploadStatus} === '3' }" visible="{= ${UploadStatus} === '3' }" press="onReprocessPress" class="sapUiTinyMarginEnd"/>
+											<Button icon="sap-icon://shipping-status" tooltip="{i18n>btnUploadToS4H}" enabled="{= ${UploadStatus} === '0' }" visible="{= ${UploadStatus} === '0' }" press="onUploadToS4HPress" class="sapUiTinyMarginEnd"/>
+											<Button icon="sap-icon://cancel" tooltip="{i18n>btnDisableUploadToS4H}" enabled="{= (${UploadStatus} === '3' || ${UploadStatus} === '0') }" press="onDisableUploadToS4HPress"/>
+										</FlexBox>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</smartTable:SmartTable>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

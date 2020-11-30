@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="delaware.scpupload.controller.Error"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartTable="sap.ui.comp.smarttable">
+	<App>
+		<pages>
+			<Page title="{i18n>ttlErrors}"
+				showNavButton="true"
+				navButtonPress="onNavBack">
+				<content>
+					<smartTable:SmartTable
+						id="tblUploadErrors"
+						entitySet="GetUploadErrors"
+						tableType="ResponsiveTable" 
+						useExportToExcel="true"
+						beforeRebindTable="onBeforeRebindTable"
+						useVariantManagement="false" 
+						useTablePersonalisation="true" 
+						header="{i18n>lblErrors}" 
+						showRowCount="true" 
+						persistencyKey="smrtTblUploadErrors"
+						enableAutoBinding="true" 
+						demandPopin="true" 
+						class="sapUiResponsiveContentPadding">
+					</smartTable:SmartTable>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

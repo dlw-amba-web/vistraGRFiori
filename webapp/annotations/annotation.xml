@@ -1,0 +1,188 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="delaware.global.services.GetUploadLinesType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadId"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_ID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadName"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_NAME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadTimestamp"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOADED_ON}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadUser"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOADED_BY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadStatus"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_STATUS}"/>
+						</Record>
+						<Record Type="UI.DataFieldWithAction">
+							<PropertyValue Property="Action" Path="ItemReference/UploadId"/>
+							<PropertyValue Property="Value" Path="ItemReference/UploadId"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="PostingDate"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;POSTING_DATE}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SendingCostCenter"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;SENDING_COSTCENTER}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ReceivingCostCenter"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;RECEIVING_COSTCENTER}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ReceiverWBSElement"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;RECEIVER_WBS_ELEMENT}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Quantity"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;QUANTITY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UnitOfMeasure"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UNIT_OF_MEASURE}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Text"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;TEXT}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TotalAmount"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;TOTAL_AMOUNT}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/UploadId">
+				<Annotation Term="Common.Label" String="{@i18n&gt;UPLOAD_ID}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/UploadLineId">
+				<Annotation Term="Common.Label" String="{@i18n&gt;LINE_ID}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/UploadHeaderId">
+				<Annotation Term="Common.Label" String="{@i18n&gt;HEADER_ID}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/HeaderText">
+				<Annotation Term="Common.Label" String="{@i18n&gt;HEADER_TEXT}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/DocumentDate">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DOCUMENT_DATE}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/ControllingArea">
+				<Annotation Term="Common.Label" String="{@i18n&gt;CONTROLLING_AREA}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/SatyTyp">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SATY_TYP}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/PersonnelNumber">
+				<Annotation Term="Common.Label" String="{@i18n&gt;PERSONNEL_NUMBER}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/Currency">
+				<Annotation Term="Common.Label" String="{@i18n&gt;CURRENCY}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/CostElement">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COST_ELEMENT}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/WorkItemId">
+				<Annotation Term="Common.Label" String="{@i18n&gt;WORKITEM_ID}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/CompanyCode">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COMPANY_CODE}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/FiscalYearMonth">
+				<Annotation Term="Common.Label" String="{@i18n&gt;FISCAL_YEAR_MONTH}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/S4HCounter">
+				<Annotation Term="Common.Label" String="{@i18n&gt;S4H_COUNTER}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/S4HSubmitDatetime">
+				<Annotation Term="Common.Label" String="{@i18n&gt;S4H_SUBMIT_DATETIME}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/S4HErrorCode">
+				<Annotation Term="Common.Label" String="{@i18n&gt;S4H_ERROR_CODE}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/S4HErrorMessage">
+				<Annotation Term="Common.Label" String="{@i18n&gt;S4H_ERROR_MESSAGE}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/ExpenseTicketNumber">
+				<Annotation Term="Common.Label" String="{@i18n&gt;EXPENSE_TICKET_NUMBER}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadLineItemsType/ServiceTicketNumber">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SERVICE_TICKET_NUMBER}"/>
+			</Annotations>
+			<Annotations Target="delaware.global.services.GetUploadErrorsType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadId"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_ID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadHeaderId"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_HEADER_ID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UploadErrorLineId"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UPLOAD_ERROR_LINE_ID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="S4HSubmitDateTime"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;S4H_SUBMIT_DATETIME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="S4HErrorCode"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;S4H_ERROR_CODE}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="S4HErrorMessage"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;S4H_ERROR_MESSAGE}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

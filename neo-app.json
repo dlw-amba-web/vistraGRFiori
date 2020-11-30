@@ -1,0 +1,41 @@
+{
+	"welcomeFile": "/webapp/index.html",
+	"routes": [{
+		"path": "/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources"
+		},
+		"description": "SAPUI5 Test Resources"
+	}, {
+		"path": "/api-odata",
+		"target": {
+			"type": "destination",
+			"name": "UploadAllocations"
+		},
+		"description": "Close Purchase Orders App Destination"
+	}, {
+		"path": "/api-rest",
+		"target": {
+			"type": "destination",
+			"name": "UploadAllocationsFileUpload"
+		},
+		"description": "Upload Allocations Destination for file upload"
+	}, {
+		"path": "/api-cpi",
+		"target": {
+			"type": "destination",
+			"name": "CPI_Reallocations"
+		}
+	}],
+	"sendWelcomeFileRedirect": true
+}

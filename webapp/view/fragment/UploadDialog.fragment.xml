@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+	id="addUploadDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog
+		title="{i18n>lblNewUpload}">
+		<content>
+			<f:SimpleForm id="formUpload"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				title="{i18n>lblUploadDetails}"
+				labelSpanXL="3"
+				labelSpanL="3"
+				labelSpanM="3"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="4"
+				emptySpanL="4"
+				emptySpanM="4"
+				emptySpanS="0"
+				columnsXL="1"
+				columnsL="1"
+				columnsM="1"
+				singleContainerFullSize="false" >
+				<f:content>
+					<Label text="{i18n>lblFileName}" />
+					<Input id="name" value="{newUploadModel>/UploadName}"/>
+					<Label text="{i18n>lblFile}" />
+					<u:FileUploader
+						id="allocationUploader"
+						uploadUrl="/sap/fiori/uploadtoscp/api-rest/zUploadAllocations.xsjs"
+						tooltip="{i18n>tltpFileUpload}"
+						uploadComplete="handleUploadComplete"
+						typeMissmatch="handleTypeMissmatch"
+						style="Emphasized"
+						fileType="csv"
+						placeholder="{i18n>tltpFileUpload}...">
+					</u:FileUploader>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="{i18n>btnUpload}" press="onCreateNewUpload" />
+		</beginButton>
+		<endButton>
+	        <Button text="{i18n>btnCancel}" press="onCancelNewUpload" />
+	    </endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="delaware.scpupload.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartTable="sap.ui.comp.smarttable">
+	<App>
+		<pages>
+			<Page title="{i18n>ttlDetails}"
+				showNavButton="true"
+				navButtonPress="onNavBack">
+				<content>
+					<smartTable:SmartTable
+						id="tblUploadLineItems"
+						entitySet="GetUploadLineItems"
+						tableType="ResponsiveTable" 
+						beforeRebindTable="onBeforeRebindTable"
+						useExportToExcel="true"
+						useVariantManagement="false" 
+						useTablePersonalisation="true" 
+						header="{i18n>lblUploads}" 
+						showRowCount="true" 
+						persistencyKey="smrtTblUploadLineItems" 
+						enableAutoBinding="true" 
+						demandPopin="true" 
+						class="sapUiResponsiveContentPadding">
+					</smartTable:SmartTable>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
